@@ -1,0 +1,23 @@
+{
+  "name": "applitools-hackathon-2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhhoangvn/applitools-hackathon-2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhhoangvn/applitools-hackathon-2020/issues"
+  },
+  "homepage": "https://github.com/minhhoangvn/applitools-hackathon-2020#readme",
+  "devDependencies": {
+    "@applitools/eyes-cypress": "^3.15.5",
+    "cypress": "^5.6.0"
+  }
+}
