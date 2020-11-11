@@ -1,34 +1,73 @@
 describe("AppTest", () => {
-
-    it(`smokeTest`, function () {
-        // Navigate to the url we want to test
-        // ⭐️ Note to see visual bugs, run the test using the above URL for the 1st run.
-        // but then change the above URL to https://demo.applitools.com/index_v2.html
-        // (for the 2nd run)
-        cy.visit('https://demo.applitools.com');
-
+    beforeEach(()=>{
+        cy.visit('https://demo.applitools.com/tlcHackathonMasterV2.html');
+    })
+    it(`Test 1`, function () {
         // Call Open on eyes to initialize a test session
         cy.eyesOpen({
-            appName: 'Demo App',
-            testName: 'Smoke Test',
+            appName: 'AppliFashion',
+            testName: 'Test 1',
         })
 
         // check the login page with fluent api, see more info here
         // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
         cy.eyesCheckWindow({
-            tag: "Login Window",
+            appName: "AppliFashion",
+            testName: 'Test 1',
+            stepName: "main page",
             target: 'window',
-            fully: true
+            fully: true,
         });
 
-        cy.get('#log-in').click()
+        // Call Close on eyes to let the server know it should display the results
+        cy.eyesClose()
+    });
 
-        // Check the app page
+    it(`Test 2`, function () {
+        // Call Open on eyes to initialize a test session
+        cy.eyesOpen({
+            appName: 'AppliFashion',
+            testName: 'Test 2',
+        })
+
+        // Select black shoes
+        cy.get("div[id*='sidebar'] #colors__Black").check()
+        cy.get('#filterBtn').click()
+
+        // Check shoes grid (id=product_grid) and verify that only two black shoes appear.
         cy.eyesCheckWindow({
-            tag: "App Window",
+            target: 'region',
+            selector: {
+              type: 'css',
+              selector: '#product_grid' // or '//button'
+            },
+            appName: "AppliFashion",
+            testName: 'Test 2',
+            stepName: "filter by color",
+          });
+
+        // Call Close on eyes to let the server know it should display the results
+        cy.eyesClose()
+    });
+
+    it(`Test 3`, function () {
+        // Call Open on eyes to initialize a test session
+        cy.eyesOpen({
+            appName: 'AppliFashion',
+            testName: 'Test 3',
+        })
+
+        // Select Appli Air x Night black shoe
+        cy.get("div[id*='sidebar'] #colors__Black").click()
+        cy.xpath("//a[contains(normalize-space(.),'Appli Air x Night')]").click()
+        // Check shoes grid (id=product_grid) and verify that only two black shoes appear.
+        cy.eyesCheckWindow({
             target: 'window',
-            fully: true
-        });
+            fully: true,
+            appName: "AppliFashion",
+            testName: 'Test 3',
+            stepName: "product details",
+          });
 
         // Call Close on eyes to let the server know it should display the results
         cy.eyesClose()

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/minhhoangvn/applitools-hackathon-2020#readme",
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.15.5",
-    "cypress": "^5.6.0"
+    "cypress": "^5.6.0",
+    "cypress-xpath": "^1.6.1"
   }
 }
