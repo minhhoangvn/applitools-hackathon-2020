@@ -11,5 +11,5 @@ module.exports = {
         {deviceName: 'iPhone X', screenOrientation: 'portrait'},
     ],
     // set batch name to the configuration
-    batchName: 'Testing Lifecycle'
+    batchName: 'Testing Lifecycle Test'
 }
